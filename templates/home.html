@@ -1,0 +1,21 @@
+<ion-view title="Home">
+    <ion-content ng-controller="MainCtrl">
+      <!-- The content of the page -->
+
+	<ion-list>
+		<ion-item ng-repeat="app in $storage.apps.apps | orderBy:'id':reverse" class="item-avatar">
+		<img src="https://build.phonegap.com/api/v1/apps/{{app.id}}/icon?access_token={{$storage.appToken}}"/>
+				<i class="icon padding-right ion-chevron-right" style="float:right;font-size: 40px;"></i>
+				<i class="icon padding-right ion-pull-request" style="float:right;font-size: 40px;"></i>
+				<i class="icon padding-right ion-android-download" style="float:right;font-size: 40px;"></i>
+		<span>{{app.title}}</span><br/>
+		<span>{{app.package}} v{{app.version}}</span>
+		
+		
+
+		</ion-item>
+	</ion-list>
+
+</div>
+    </ion-content>
+</ion-view>

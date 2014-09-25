@@ -1,0 +1,15 @@
+<ion-view title="Options" >
+    <ion-content ng-controller="OptionsCtrl">
+	<div class="item item-input-inset">
+		<label class="item-input-wrapper">
+		<input ng-model="AuthToken.authToken" type="text" placeholder="Paste token here">
+		</label>
+		<button class="button button-small" ng-click="AuthToken.refresh()">
+		Get app token
+		</button>
+	</div>
+	<div class="item item-input-inset">
+	App token : {{$storage.appToken}}
+	</div>
+    </ion-content>
+</ion-view>
