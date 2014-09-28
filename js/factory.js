@@ -1,7 +1,23 @@
 app.factory('DataSource', ['$http',function($http){
+
+	// 2 - Check if accessed via web or via PhoneGap app and change api URL accordingly
+    var nativeapp = document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1;
+	if ( nativeapp ) {
+	    // PhoneGap application
+		apiUrl = "http://rlier.fr/pgbuild/server/api";
+		phonegap = true;		
+	} else {
+	    // Web page
+        if(document.URL.indexOf( 'localhost' ) !== -1) {
+			apiUrl = "http://rlier.fr/pgbuild/server/api";
+           }
+	    else {
+			apiUrl = "../server/api";	
+        }
+	}
+
   return {
-    url: "../server/api" ,
-	//url : "https://build-phonegap-com-8crj2qnlbi8y.runscope.net/" ,
+    url: apiUrl ,
     get: function(callback,errorcallback, path){
       $http
           .get(this.url+path, {timeout:17000})
