@@ -10,7 +10,7 @@
 				<i class="icon ion-iphone {{app.status.ios}} list-button" style=""></i>
 				<i class="icon ion-social-windows {{app.status.winphone}} list-button" style=""></i>
 				<i class="icon ion-social-android {{app.status.android}} list-button" style=""></i>
-				<a class="icon ion-android-download" style="font-size: 40px;padding-right:20px;" ng-href="https://build.phonegap.com/api/v1/apps/{{app.id}}/android?access_token={{$storage.appToken}}" ng-click="navigator.app.loadUrl("https://build.phonegap.com/api/v1/apps/{{app.id}}/android?access_token={{$storage.appToken}}", {openExternal : true});"></a>
+				<a class="icon ion-android-download" style="font-size: 40px;padding-right:20px;" ng-href="https://build.phonegap.com/api/v1/apps/{{app.id}}/android?access_token={{$storage.appToken}}" ng-click="$window.open('https://build.phonegap.com/api/v1/apps/{{app.id}}/android?access_token={{$storage.appToken}}', '_system');"></a>
 				<i class="icon ion-pull-request" style="font-size: 40px;padding-right:20px;" ng-click="PgAPI.pullApp($storage.appToken, app.id)"></i>
 				<a class="icon ion-chevron-right" style="font-size: 40px;color:lightgrey;" ng-href="#/details/{{app.id}}"></a>
 		</div>

@@ -52,6 +52,8 @@
         A list of available plugins are available at https://build.phonegap.com/docs/plugins
     -->
 		<gap:plugin name="com.adobe.plugins.gaplugin" />
+		<gap:plugin name="org.apache.cordova.inappbrowser" version="0.2.4" />
+		
 		
     <!-- Define app icon for each platform. -->
     <icon src="pgbuild.png" />
