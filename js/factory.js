@@ -55,7 +55,7 @@ app.factory('DataSource', ['$http',function($http){
     refresh : function(){
 	  this.setAuth(this.authToken);
 	  this.setApp("");
-      DataSource.post(this.setApp, this.err, "http://rlier.fr/pgbuild/server/api/post/"+this.authToken);
+      DataSource.post(this.setApp, this.err, "/post/"+this.authToken);
     } ,
 	err : function(){
     }
