@@ -32,16 +32,18 @@
 <ion-side-menus>
   <!-- Center content -->
   <ion-side-menu-content>
-	<ion-nav-bar></ion-nav-bar>
+	<ion-nav-bar>
+		<button class="button button-icon icon ion-navicon" menu-toggle="left"></button>
+	</ion-nav-bar>
 		<ion-nav-view animation="slide-left-right">
 		</ion-nav-view>
   </ion-side-menu-content>
 
   <!-- Left menu -->
   <ion-side-menu side="left">
-	<ion-list>
-		<ion-item ng-href="#/">Accueil</ion-item>
-		<ion-item ng-href="#/options">Options</ion-item>
+	<ion-list menu-close>
+		<ion-item ng-href="#/" nav-clear>Accueil</ion-item>
+		<ion-item ng-href="#/options" nav-clear>Options</ion-item>
 	</ion-list>
   </ion-side-menu>
 </ion-side-menus>

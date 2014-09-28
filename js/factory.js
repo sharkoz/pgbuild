@@ -1,14 +1,22 @@
 app.factory('DataSource', ['$http',function($http){
   return {
-    get: function(callback,errorcallback, url){
+    url: "../server/api" ,
+	//url : "https://build-phonegap-com-8crj2qnlbi8y.runscope.net/" ,
+    get: function(callback,errorcallback, path){
       $http
-          .jsonp(url, {timeout:17000})
+          .get(this.url+path, {timeout:17000})
           .success(function(data, status) { callback(data);  })
           .error(function(data, status) { errorcallback(data);  })
     } ,
-	post: function(callback,errorcallback, url){
+	post: function(callback,errorcallback, path){
       $http
-          .post(url+"&callback=JSON_CALLBACK", {timeout:17000})
+          .post(this.url+path, {timeout:17000})
+          .success(function(data, status) { callback(data);  })
+          .error(function(data, status) { errorcallback(data);  })
+    } ,
+	put: function(callback,errorcallback, path, data){
+      $http
+          .put(this.url+path, data,{timeout:17000})
           .success(function(data, status) { callback(data);  })
           .error(function(data, status) { errorcallback(data);  })
     }
@@ -45,15 +53,28 @@ app.factory('DataSource', ['$http',function($http){
 		$localStorage.apps = apps;
     },
     getApps : function(appToken){
-      DataSource.get(this.setApps, this.err, "https://build.phonegap.com/api/v1/apps?access_token="+appToken);
+      DataSource.get(this.setApps, this.err, "/api/v1/apps?access_token="+appToken);
     },
     setMe : function(me){
 		$localStorage.me = me;
     },
     getMe : function(appToken){
-      DataSource.get(this.setMe, this.err, "https://build.phonegap.com/api/v1/me?access_token="+appToken);
+      DataSource.get(this.setMe, this.err, "/api/v1/me?access_token="+appToken);
+    },
+	setDetails : function(details){
+		$localStorage.details[$localStorage.appId] = details;
+    },
+    getDetails : function(appToken, appId){
+	  $localStorage.appId = appId;
+      DataSource.get(this.setDetails, this.err, "/api/v1/apps/"+appId+"?access_token="+appToken);
+    },
+	pullApp : function(appToken, appId){
+	  $localStorage.appId = appId;
+      DataSource.put(this.err, this.err, "/api/v1/apps/"+appId+"?access_token="+appToken, {"pull":"true"});
     },
 	err : function(){
     }
   }
  });
+ 
+ 

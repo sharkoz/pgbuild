@@ -20,7 +20,13 @@ app = angular.module('pgbuild', ['ionic', 'ngStorage'])
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
+
+	//For handling CORS requests
+    delete $httpProvider.defaults.headers.common["X-Requested-With"];
+	delete $httpProvider.defaults.headers.post['Content-type'];
+	delete $httpProvider.defaults.headers.put['Content-type'];
+	$httpProvider.defaults.useXDomain = true;
 
 $urlRouterProvider.otherwise("/");
 
@@ -32,5 +38,10 @@ $urlRouterProvider.otherwise("/");
   .state('options', {
     url: '/options',
     templateUrl: 'templates/options.html'
+  })
+  .state('details', {
+    url: '/details/:id',
+    templateUrl: 'templates/details.html'
   });
+
 });

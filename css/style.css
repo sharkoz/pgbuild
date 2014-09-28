@@ -1,0 +1,52 @@
+.complete
+{color: green;}
+.pending{
+  color:grey;
+  -webkit-animation: rotating 3s linear infinite;
+  -moz-animation: rotating 3s linear infinite;
+  -ms-animation: rotating 3s linear infinite;
+  -o-animation: rotating 3s linear infinite;
+  animation: rotating 3s linear infinite;
+}
+.error
+{color:red;}
+
+.list-button
+{
+font-size: 40px;
+padding-right:10px;
+padding-left:10px;
+}
+
+@keyframes rotating {
+  from {
+    transform: rotateY(179deg);
+    -ms-transform: rotateY(179deg);
+    -moz-transform: rotateY(179deg);
+    -webkit-transform: rotateY(179deg);
+    -o-transform: rotateY(179deg);
+  }
+  to {
+    transform: rotateY(-179deg);
+    -ms-transform: rotateY(-179deg);
+    -moz-transform: rotateY(-179deg);
+    -webkit-transform: rotateY(-179deg);
+    -o-transform: rotateY(-179deg);
+  }
+}
+@-webkit-keyframes rotating /* Safari and Chrome */ {
+  from {
+    transform: rotateY(179deg);
+    -ms-transform: rotateY(179deg);
+    -moz-transform: rotateY(179deg);
+    -webkit-transform: rotateY(179deg);
+    -o-transform: rotateY(179deg);
+  }
+  to {
+    transform: rotateY(-179deg);
+    -ms-transform: rotateY(-179deg);
+    -moz-transform: rotateY(-179deg);
+    -webkit-transform: rotateY(-179deg);
+    -o-transform: rotateY(-179deg);
+  }
+}
