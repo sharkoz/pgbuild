@@ -28,6 +28,25 @@ app.controller('OptionsCtrl2', function($scope, $localStorage, AuthToken) {
 		  }
 
 		  //TODO - exchange code for access token...
+		});		
+
+		$scope.authWindow.onchange(function() {
+		  var url = scope.authWindow.location.href;
+		  var code = /\?code=(.+)$/.exec(url);
+		  var error = /\?error=(.+)$/.exec(url);
+		  console.log(e);
+		  if (code || error) {
+		    authWindow.close();
+		  }
+
+		  if (code) {
+		    console.log(code);
+		  }
+		  if (error) {
+		    console.log(error);
+		  }
+
+		  //TODO - exchange code for access token...
 		});
 	}
 });
