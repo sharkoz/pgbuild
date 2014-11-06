@@ -3,6 +3,35 @@ app.controller('OptionsCtrl', function($scope, $localStorage, AuthToken) {
 	$scope.$storage = $localStorage;
 });
 
+app.controller('OptionsCtrl2', function($scope, $localStorage, AuthToken) {
+	$scope.AuthToken = AuthToken;
+	$scope.$storage = $localStorage;
+
+	$scope.auth = function(){
+		authUrl = "https://build.phonegap.com/authorize?client_id=e499d3af5e18baa92d6b";
+		$scope.authWindow = window.open(authUrl, '_blank', 'location=no,toolbar=no');
+
+		$scope.authWindow.addEventListener('loadstart', function(e) {
+		  var url = e.originalEvent.url;
+		  var code = /\?code=(.+)$/.exec(url);
+		  var error = /\?error=(.+)$/.exec(url);
+		  console.log(e);
+		  if (code || error) {
+		    authWindow.close();
+		  }
+
+		  if (code) {
+		    console.log(code);
+		  }
+		  if (error) {
+		    console.log(error);
+		  }
+
+		  //TODO - exchange code for access token...
+		});
+	}
+});
+
 app.controller('MainCtrl', function($scope, $localStorage, $timeout, PgAPI) {
 	$scope.$storage = $localStorage;
 	$scope.PgAPI = PgAPI;

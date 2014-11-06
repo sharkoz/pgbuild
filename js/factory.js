@@ -20,19 +20,19 @@ app.factory('DataSource', ['$http',function($http){
     url: apiUrl ,
     get: function(callback,errorcallback, path){
       $http
-          .get(this.url+path, {timeout:17000})
+          .get(this.url+'/get'+path, {timeout:17000})
           .success(function(data, status) { callback(data);  })
           .error(function(data, status) { errorcallback(data);  })
     } ,
 	post: function(callback,errorcallback, path){
       $http
-          .post(this.url+path, {timeout:17000})
+          .get(this.url+'/post'+path, {timeout:17000})
           .success(function(data, status) { callback(data);  })
           .error(function(data, status) { errorcallback(data);  })
     } ,
 	put: function(callback,errorcallback, path, data){
       $http
-          .put(this.url+path, data,{timeout:17000})
+          .get(this.url+'/put'+path, {timeout:17000})
           .success(function(data, status) { callback(data);  })
           .error(function(data, status) { errorcallback(data);  })
     }
@@ -55,7 +55,7 @@ app.factory('DataSource', ['$http',function($http){
     refresh : function(){
 	  this.setAuth(this.authToken);
 	  this.setApp("");
-      DataSource.post(this.setApp, this.err, "/post/"+this.authToken);
+      DataSource.post(this.setApp, this.err, "/gettoken/"+this.authToken);
     } ,
 	err : function(error){
 		console.log(error);

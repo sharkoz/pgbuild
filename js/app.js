@@ -39,6 +39,10 @@ $urlRouterProvider.otherwise("/");
     url: '/options',
     templateUrl: 'templates/options.html'
   })
+    .state('options2', {
+    url: '/options2',
+    templateUrl: 'templates/options2.html'
+  })
   .state('details', {
     url: '/details/:id',
     templateUrl: 'templates/details.html'

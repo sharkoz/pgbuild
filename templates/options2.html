@@ -1,10 +1,10 @@
 <ion-view title="Options" >
-    <ion-content ng-controller="OptionsCtrl">
+    <ion-content ng-controller="OptionsCtrl2">
    	<div class="item item-divider">
    		1. Copy your authentification token on this page, at the bottom of the "Client applications" tab :
     </div>
-    <div class="item" onclick="window.open('https://build.phonegap.com/people/edit', '_system')">
-    	<a href="#/options">https://build.phonegap.com/people/edit</a><br/>
+    <div class="item" ng-click="auth()">
+    	Click here
     </div>
    	<div class="item item-divider">
    		2. Paste it in the field below, and click "Get my token"
