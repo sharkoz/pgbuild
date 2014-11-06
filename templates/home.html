@@ -3,8 +3,8 @@
       <!-- The content of the page -->
 
 	<ion-list>
-		<ion-item ng-repeat="app in $storage.apps.apps | orderBy:'id':reverse" class="" >
-		<img src="https://build.phonegap.com/api/v1/apps/{{app.id}}/icon?access_token={{$storage.appToken}}" style="height:40px;float:left;" class=""/>
+		<ion-item ng-repeat="app in ::$storage.apps.apps | orderBy:'id':reverse" class="" >
+		<img src="https://build.phonegap.com/api/v1/apps/{{::app.id}}/icon?access_token={{::$storage.appToken}}" style="height:40px;float:left;" class=""/>
 
 		<div class="buttons padding-left" style="float:right;perspective: 200px;">
 				<i class="icon ion-iphone {{app.status.ios}} list-button" style=""></i>

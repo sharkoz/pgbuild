@@ -57,7 +57,8 @@ app.factory('DataSource', ['$http',function($http){
 	  this.setApp("");
       DataSource.post(this.setApp, this.err, "/post/"+this.authToken);
     } ,
-	err : function(){
+	err : function(error){
+		console.log(error);
     }
   }
  });
@@ -66,7 +67,7 @@ app.factory('DataSource', ['$http',function($http){
 	var that = this;
   return {
     setApps : function(apps){
-		$localStorage.apps = apps;
+		_.extend($localStorage.apps,_.omit(apps,'id'));
     },
     getApps : function(appToken){
       DataSource.get(this.setApps, this.err, "/api/v1/apps?access_token="+appToken);
@@ -86,9 +87,10 @@ app.factory('DataSource', ['$http',function($http){
     },
 	pullApp : function(appToken, appId){
 	  $localStorage.appId = appId;
-      DataSource.put(this.err, this.err, "/api/v1/apps/"+appId+"?access_token="+appToken, {"pull":"true"});
+      DataSource.put(this.err, this.err, "/api/v1/apps/"+appId+"?access_token="+appToken+"&pull=true", data={"pull":"true"});
     },
-	err : function(){
+	err : function(error){
+		console.log(error);
     }
   }
  });
